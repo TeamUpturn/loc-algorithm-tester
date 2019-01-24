@@ -2,7 +2,14 @@ body {
 	font-family: arial;
 }
 
-div {
-	height: 600px;
-    overflow: scroll;
+.header {
+	position: fixed;
+	top: 0;
+	background-color: #ffffff;
+	margin: auto;
+	width: 100%;
+}
+
+.content {
+	margin-top: 200px;
 }
