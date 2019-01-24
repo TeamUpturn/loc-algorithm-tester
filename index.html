@@ -7,266 +7,113 @@
 
 <center>
 
-<table width="90%"> 
+	<h1> Qualification Testing Tool </h1>
 
-	<tr>
+	<p> To use: simply enter values into each field. Relevant scores will auto-update with each change. <br> An output of -1 indicates the input do not map to a LOC according to the rules. This means the proposed algorithm may not cover every case. </p>
 
-		<td>
-		</td>
-		<td>
-			<h1> Qualification Testing Tool </h1>
-		</td>
-		<td width="20%">
-			<small> A value of -1 indicates the input do not map to a LOC according to the rules. This means the proposed algorithm may not cover every case. </small>
-		</td>
-	</tr>
+	<h3> New LOC total score: <span id="new_loc_total"></span></h3>
 
-	<tr> 
-		<td>
-			<h2> Patient Information </h2>
-			<p> Example ID: </p>
-			<input id="id" type="number" min="0" required>
-			<p> Category (elderly, mental health, etc): </p>
-			<input id="cat" type="text">
-			<p> Old LOC total score: </p>
-			<input id="old_loc" type="number" min="0" max="81" required>
-			<p> New LOC total score: </p>
-			<p id="new_loc_total"></p>
-		</td>
-		<td> 
-			<h2> Blended LOC System </h2>
-			<h3> Behavioral </h3>
-			<p> E3a    -    Wandering <input id="E3a" type="number"> </p>
-			<p>	E3b    -    Verbal Abuse <input id="E3b" type="number"> </p>
-			<p>	E3c    -    Physical Abuse <input id="E3c" type="number"> </p>
-			<p>	E3d    -    Socially Inappropriate / Disruptive <input id="E3d" type="number"> </p>
-			<p>	E3e    -    Inappropriate Public Sexual Behavior <input id="E3e" type="number"> </p>
-			<p>	E3f    -    Resists Care <input id="E3f" type="number"> </p>
-			<p>	J3g    -    Abnormal Thought Process <input id="J3g" type="number"> </p>
-			<p>	J3h    -    Delusions <input id="J3h" type="number"> </p>          
-			<p>	J3i    -    Hallucinations <input id="J3i" type="number"> </p>
-			<p>	N7b    -    Mental Condition <input id="N7b" type="number"> </p>
-		</td>
-		<td>
-			<h4> LOC Behavioral: </h4>
-			<p id="loc_behavioral"></p>
-			<button type="button" onclick="LOCBehavioral()"> Update </button>
-		</td>
-	</tr>
+<div>
 
-	<tr> 
-		<td>
-		</td>
-		<td> 
-			<h3> Cognition </h3>
-			<p> C1     -    Cognitive Skills <input id="C1" type="number"> </p>
-			<p>	C2a    -    Short Term Memory <input id="C2a" type="number"> </p>
-			<p>	C2b    -    Procedural Memory <input id="C2b" type="number"> </p>
-			<p>	C2c    -    Situational Memory <input id="C2c" type="number"> </p>
-			<p>	C3c    -    Mental Function <input id="C3c" type="number"> </p>
-			<p>	D1     -    Making Self Understood <input id="D1" type="number"> </p>
-			<p>	D2    -    Ability to Understand Others <input id="D2" type="number"> </p>
-		</td>
-		<td>
-			<h4> LOC Cognition: </h4>
-			<p id="loc_cognition"></p>
-			<p id="loc_cognition_trigger"></p>
-			<button type="button" onclick="LOCCognition()"> Update </button>
-		</td>
-	</tr>
+	<h3> Behavioral: <span id="loc_behavioral">0</span></h3>
 
-	<tr>
-		<td>
-		</td>
-		<td>
-			<h3> Activities of Daily Living </h3>
-			<h4> Mobility </h4>
-			<p> G2e    -    Walking <input id="G2e" type="number"></p>
-			<p>	G2f    -    Locomotion <input id="G2f" type="number"></p>
-			<p>	G2i    -    Bed Mobility <input id="G2i" type="number"></p>
-			<p>	G3a    -    Primary mode of locomotion <input id="G3a" type="number"></p>
-		</td>
-		<td>
-			<h4> LOC Mobility: </h4>
+	<p> E3a    -    Wandering <input id="E3a" type="number" value="0" oninput="LOCBehavioral()"> </p>
+	<p>	E3b    -    Verbal Abuse <input id="E3b" type="number" value="0" oninput="LOCBehavioral()"> </p>
+	<p>	E3c    -    Physical Abuse <input id="E3c" type="number" value="0" oninput="LOCBehavioral()"> </p>
+	<p>	E3d    -    Socially Inappropriate / Disruptive <input id="E3d" type="number" value="0" oninput="LOCBehavioral()"> </p>
+	<p>	E3e    -    Inappropriate Public Sexual Behavior <input id="E3e" type="number" value="0" oninput="LOCBehavioral()"> </p>
+	<p>	E3f    -    Resists Care <input id="E3f" type="number" value="0" oninput="LOCBehavioral()"> </p>
+	<p>	J3g    -    Abnormal Thought Process <input id="J3g" type="number" value="0" oninput="LOCBehavioral()"> </p>
+	<p>	J3h    -    Delusions <input id="J3h" type="number" value="0" oninput="LOCBehavioral()"> </p>          
+	<p>	J3i    -    Hallucinations <input id="J3i" type="number" value="0" oninput="LOCBehavioral()"> </p>
+	<p>	N7b    -    Mental Condition <input id="N7b" type="number" value="0" oninput="LOCBehavioral()"> </p>
+	
 
-			<p id="loc_mobility"></p>
-			<p id="loc_mobility_trigger"></p>
+	<h3> Cognition: <span id="loc_cognition">0</span> <span id="loc_cognition_trigger"></span></h3>
 
-			<button type="button" onclick="LOCMobility()"> Update </button>
-		</td>
-	</tr>
+	<p> C1     -    Cognitive Skills <input id="C1" type="number" value="0" oninput="LOCCognition()"> </p>
+	<p>	C2a    -    Short Term Memory <input id="C2a" type="number" value="0" oninput="LOCCognition()"> </p>
+	<p>	C2b    -    Procedural Memory <input id="C2b" type="number" value="0" oninput="LOCCognition()"> </p>
+	<p>	C2c    -    Situational Memory <input id="C2c" type="number" value="0" oninput="LOCCognition()"> </p>
+	<p>	C3c    -    Mental Function <input id="C3c" type="number" value="0" oninput="LOCCognition()"> </p>
+	<p>	D1     -    Making Self Understood <input id="D1" type="number" value="0" oninput="LOCCognition()"> </p>
+	<p>	D2    -    Ability to Understand Others <input id="D2" type="number" value="0" oninput="LOCCognition()"> </p>
 
-	<tr>
-		<td>
-		</td>
-		<td>
-			<h4> Eating </h4>
-			<p> G2j    -    Eating <input id="G2j" type="number"></p>
-			<p> K2e    -    Therapeutic Diet <input id="K2e" type="number"></p>
-		</td>
-		<td>
-			<h4> LOC Eating: </h4>
+		
+	<h3> Activities of Daily Living - Mobility: <span id="loc_mobility">0</span> <span id="loc_mobility_trigger"></span></h3>
 
-			<p id="loc_eating"></p>
-			<p id="loc_eating_trigger"></p>
+	<p> G2e    -    Walking <input id="G2e" type="number" value="0" oninput="LOCMobility()"></p>
+	<p>	G2f    -    Locomotion <input id="G2f" type="number" value="0" oninput="LOCMobility()"></p>
+	<p>	G2i    -    Bed Mobility <input id="G2i" type="number" value="0" oninput="LOCMobility()"></p>
+	<p>	G3a    -    Primary mode of locomotion <input id="G3a" type="number" value="0" oninput="LOCMobility()"></p>
 
-			<button type="button" onclick="LOCEating()"> Update </button>
-		</td>
-	</tr>
 
-	<tr>
-		<td>
-		</td>
-		<td>
-			<h4> Toileting </h4>
-			<p> G2g    -    Transfer Toilet <input id="G2g" type="number"></p>
-			<p> G2h    -    Toilet Use <input id="G2h" type="number"></p>
-		</td>
-		<td>
-			<h4> LOC Toileting: </h4>
+	<h3> Activities of Daily Living - Eating: <span id="loc_eating">0</span> <span id="loc_eating_trigger"></span></h3>
 
-			<p id="loc_toileting"></p>
+	<p> G2j    -    Eating <input id="G2j" type="number" value="0" oninput="LOCEating()"></p>
+	<p> K2e    -    Therapeutic Diet <input id="K2e" type="number" value="0" oninput="LOCEating()"></p>
 
-			<button type="button" onclick="LOCToileting()"> Update </button>
-		</td>
-	</tr>
 
-	<tr>
-		<td>
-		</td>
-		<td>
-			<h4> Bathing </h4>
-			<p> G2a - Bathing <input id="G2a" type="number"></p>
-		</td>
-		<td>
-			<h4> LOC Bathing: </h4>
+	<h3> Activities of Daily Living - Toileting: <span id="loc_toileting">0</span></h3>
 
-			<p id="loc_bathing"></p>
+	<p> G2g    -    Transfer Toilet <input id="G2g" type="number" value="0" oninput="LOCToileting()"></p>
+	<p> G2h    -    Toilet Use <input id="G2h" type="number" value="0" oninput="LOCToileting()"></p>
 
-			<button type="button" onclick="LOCBathing()"> Update </button>
-		</td>
-	</tr>
 
-	<tr>
-		<td>
-		</td>
-		<td>
-			<h4> Dressing and Grooming </h4>
-			<p> G2b    -    Personal Hygiene <input id="G2b" type="number"></p>
-			<p> G2c    -    Dressing Upper Body <input id="G2c" type="number"></p>
-			<p> G2d    -    Dressing Lower Body <input id="G2d" type="number"></p>
-		</td>
-		<td>
-			<h4> LOC Dressing and Grooming: </h4>
+	<h3> Activities of Daily Living - Bathing: <span id="loc_bathing">0</span></h3>
 
-			<p id="loc_dressing"></p>
+	<p> G2a - Bathing <input id="G2a" type="number" value="0" oninput="LOCBathing()"></p>
 
-			<button type="button" onclick="LOCDressing()"> Update </button>
-		</td>
-	</tr>
 
-	<tr>
-		<td>
-		</td>
-		<td>
-			<h3> Rehabilitation </h3>
-			<p> N3ea    -    PT <input id="N3ea" type="number"></p>
-			<p>	N3fa    -    OT <input id="N3fa" type="number"></p>
-			<p>	N3ga    -    Speech <input id="N3ga" type="number"></p>
-			<p>	N3ia    -    Cardiac Rehab <input id="N3ia" type="number"></p>
-		</td>
-		<td>
-			<h4> LOC Rehabilitation: </h4>
+	<h3> Activities of Daily Living - Dressing and Grooming: <span id="loc_dressing">0</span></h3>
 
-			<p id="loc_rehabilitation"></p>
+	<p> G2b    -    Personal Hygiene <input id="G2b" type="number" value="0" oninput="LOCDressing()"></p>
+	<p> G2c    -    Dressing Upper Body <input id="G2c" type="number" value="0" oninput="LOCDressing()"></p>
+	<p> G2d    -    Dressing Lower Body <input id="G2d" type="number" value="0" oninput="LOCDressing()"></p>
 
-			<button type="button" onclick="LOCRehabilitation()"> Update </button>
-		</td>
-	</tr>
 
-	<tr>
-		<td>
-		</td>
-		<td>
-			<h3> Treatments </h3>
-			<p> H2    -    Urinary Collection Device <input id="H2" type="number"></p>
-			<p>	H3    -    Bowel Continence <input id="H3" type="number"></p>
-			<p>	L1    -    Most Severe Pressure Ulcer <input id="L1" type="number"></p>
-			<p>	L3    -    Presence of Skin Ulcer Other than Pressure Ulcer <input id="L3" type="number"></p>
-			<p>	L4    -    Major Skin Problems <input id="L4" type="number"></p>
-			<p>	N2g    -    Suctioning <input id="N2g" type="number"></p>
-			<p>	N2j    -    Ventilator or Respirator <input id="N2j" type="number"></p>
-			<p>	N2k    -    Wound Care <input id="N2k" type="number"></p>
-			<p>	N2h    -    Tracheostomy Care <input id="N2h" type="number"></p>
-			<p>	N2q    -    New or Unregulated Ostomy Care <input id="N2q" type="number"></p>
-		</td>
-		<td>
-			<h4> LOC Treatments: </h4>
+	<h3> Rehabilitation: <span id="loc_rehabilitation">0</span></h3>
 
-			<p id="loc_treatments"></p>
+	<p> N3ea    -    PT <input id="N3ea" type="number" value="0" onabort="LOCRehabilitation()"></p>
+	<p>	N3fa    -    OT <input id="N3fa" type="number" value="0" onabort="LOCRehabilitation()"></p>
+	<p>	N3ga    -    Speech <input id="N3ga" type="number" value="0" onabort="LOCRehabilitation()"></p>
+	<p>	N3ia    -    Cardiac Rehab <input id="N3ia" type="number" value="0" onabort="LOCRehabilitation()"></p>
+	
 
-			<button type="button" onclick="LOCTreatments()"> Update </button>
-		</td>
-	</tr>
+	<h3> Treatments: <span id="loc_treatments">0</span></h3>
 
-	<tr>
-		<td>
-		</td>
-		<td>
-			<h3> Instrumental Activities of Daily Living </h3>
-			<h4> Managing Medications </h4>
-			<p> G1d     -     Managing Medications <input id="G1d" type="number"></p>
-		</td>
-		<td>
-			<h4> LOC Managing Medications: </h4>
+	<p> H2    -    Urinary Collection Device <input id="H2" type="number" value="0" oninput="LOCTreatments()"></p>
+	<p>	H3    -    Bowel Continence <input id="H3" type="number" value="0" oninput="LOCTreatments()"></p>
+	<p>	L1    -    Most Severe Pressure Ulcer <input id="L1" type="number" value="0" oninput="LOCTreatments()"></p>
+	<p>	L3    -    Presence of Skin Ulcer Other than Pressure Ulcer <input id="L3" type="number" value="0" oninput="LOCTreatments()"></p>
+	<p>	L4    -    Major Skin Problems <input id="L4" type="number" value="0" oninput="LOCTreatments()"></p>
+	<p>	N2g    -    Suctioning <input id="N2g" type="number" value="0" oninput="LOCTreatments()"></p>
+	<p>	N2j    -    Ventilator or Respirator <input id="N2j" type="number" value="0" oninput="LOCTreatments()"></p>
+	<p>	N2k    -    Wound Care <input id="N2k" type="number" value="0" oninput="LOCTreatments()"></p>
+	<p>	N2h    -    Tracheostomy Care <input id="N2h" type="number" value="0" oninput="LOCTreatments()"></p>
+	<p>	N2q    -    New or Unregulated Ostomy Care <input id="N2q" type="number" value="0" oninput="LOCTreatments()"></p>
 
-			<p id="loc_medications"></p>
 
-			<button type="button" onclick="LOCMedications()"> Update </button>
-		</td>
-	</tr>
+	<h3> Instrumental Activities of Daily Living - Managing Medications: <span id="loc_medications"></span></h3>
+	
+	<p> G1d     -     Managing Medications <input id="G1d" type="number" value="0" oninput="LOCMedications()"></p>
 
-	<tr>
-		<td>
-		</td>
-		<td>
-			<h4> Meal Prep </h4>
-			<p> G1a     -     Meal Prep <input id="G1a" type="number"></p>
 
-		</td>
-		<td>
-			<h4> LOC Meal Prep: </h4>
+	<h3> Instrumental Activities of Daily Living - Meal Prep: <span id="loc_mealprep"></span></h3>
 
-			<p id="loc_mealprep"></p>
+	<p> G1a     -     Meal Prep <input id="G1a" type="number" value="0" oninput="LOCMealprep()"></p>
 
-			<button type="button" onclick="LOCMealprep()"> Update </button>
-		</td>
-	</tr>
 
-	<tr>
-		<td>
-		</td>
-		<td>
-			<h3> Safety </h3>
-			<p> D4     -     Vision <input id="D4" type="number"></p>
-			<p> J1     -     Falls <input id="J1" type="number"></p>
-			<p> J3a   <input id="J3a" type="number"></p>
-			<p> J3b   <input id="J3b" type="number"></p>
-			<p> J3c   <input id="J3c" type="number"></p>
-			<p> J3d   <input id="J3d" type="number"></p>
+	<h3> Safety: <span id="loc_safety">0</span> </h3>
 
-		</td>
-		<td>
-			<h4> LOC Safety: </h4>
+	<p> D4     -     Vision <input id="D4" type="number" value="0" oninput="LOCSafety()"></p>
+	<p> J1     -     Falls <input id="J1" type="number" value="0" oninput="LOCSafety()"></p>
+	<p> J3a   <input id="J3a" type="number" value="0" oninput="LOCSafety()"></p>
+	<p> J3b   <input id="J3b" type="number" value="0" oninput="LOCSafety()"></p>
+	<p> J3c   <input id="J3c" type="number" value="0" oninput="LOCSafety()"></p>
+	<p> J3d   <input id="J3d" type="number" value="0" oninput="LOCSafety()"></p>
 
-			<p id="loc_safety"></p>
-
-			<button type="button" onclick="LOCSafety()"> Update </button>
-		</td>
-	</tr>
-
-</table>
-
+</div>
 
 </center>
 
