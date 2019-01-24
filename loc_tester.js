@@ -18,7 +18,6 @@ function updateTotal() {
 	}
 
 	document.getElementById("new_loc_total").innerHTML = new_loc_total;
-	
 }
 
 
@@ -94,7 +93,6 @@ function LOCBehavioral() {
 
 	document.getElementById("loc_behavioral").innerHTML = new_loc_behavioral;
 	updateTotal();
-
 } 
 
 function LOCCognition() {
@@ -321,7 +319,7 @@ function LOCRehabilitation() {
 	var n3fa = document.getElementById("N3fa").value;
 	var n3ga = document.getElementById("N3ga").value;
 	var n3ia = document.getElementById("N3ia").value;
-
+console.log(n3ea, n3fa, n3ga, n3ia)
 	var new_loc_rehabilitation = -1;
 
 	// rules

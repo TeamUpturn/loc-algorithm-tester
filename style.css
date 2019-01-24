@@ -1,15 +1,21 @@
 body {
+	margin: 20px;
 	font-family: arial;
 }
 
-.header {
-	position: fixed;
-	top: 0;
-	background-color: #ffffff;
-	margin: auto;
-	width: 100%;
+input {
+	width: 50px;
 }
 
-.content {
-	margin-top: 200px;
+.questions {
+}
+
+.totalScore {
+	color: #333;
+	background-color: #D3D3D3;
+	text-align: right;
+	float: right;
+	padding: 20px;
+	position: sticky;
+	top: 0;
 }
