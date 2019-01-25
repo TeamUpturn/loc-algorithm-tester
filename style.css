@@ -26,13 +26,9 @@ input {
 }
 
 .sep {
-	width: 50%;
-	border: 3px solid #D3D3D3;
-}
-
-.sep-thin {
-	width: 50%;
-	border: 1px solid #D3D3D3;
+	width: 400px;
+   	border: 1px solid #D3D3D3;
+   	margin: 30px 0px 30px 0px;
 }
 
 .error {
