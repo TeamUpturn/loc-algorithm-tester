@@ -10,7 +10,7 @@ a {
 
 a:visited { 
 	text-decoration: none;
-  color: black;
+  	color: black;
 }
 
 a:hover {
@@ -23,6 +23,16 @@ a:hover {
 
 input {
 	width: 50px;
+}
+
+.sep {
+	width: 50%;
+	border: 3px solid #D3D3D3;
+}
+
+.sep-thin {
+	width: 50%;
+	border: 1px solid #D3D3D3;
 }
 
 .questions {
