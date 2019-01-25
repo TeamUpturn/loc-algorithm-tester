@@ -35,6 +35,11 @@ input {
 	border: 1px solid #D3D3D3;
 }
 
+.error {
+	color: red;
+	font-weight: bold;
+}
+
 .questions {
 }
 

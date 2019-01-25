@@ -17,6 +17,7 @@ function updateTotal() {
 						"loc_rehabilitation", "loc_treatments", "loc_medications",
 						"loc_mealprep", "loc_safety"]; 
 	// check for invalid subtotal first then add to running total 
+	// if there is a "N/A" subtotal, Number() will return "NaN", which is not greater than 0
 	for (var i = 0; i < subcategories.length; i++) {
 
 		var temp = Number(document.getElementById(subcategories[i]).innerHTML);
@@ -41,7 +42,7 @@ function LOCBehavioral() {
 	var j3i = document.getElementById("J3i").value;
 	var n7b = document.getElementById("N7b").value;
 
-	var new_loc_behavioral = -1;
+	var new_loc_behavioral = "<span class='error'>N/A</span>";
 
 	if ((n7b == 0 || n7b == 1) && 
 		e3a == 0 && 
@@ -112,7 +113,7 @@ function LOCCognition() {
 	var d1 = document.getElementById("D1").value;
 	var d2 = document.getElementById("D2").value;
 
-	new_loc_cognition = -1;
+	var new_loc_cognition = "<span class='error'>N/A</span>";
 
 	if ((c1 == 0 || c1 == 1 || c1 == 2 || c1 == 3) && 
 		c2a == 0 && 
@@ -172,7 +173,7 @@ function LOCMobility() {
 	var g2i = document.getElementById("G2i").value;
 	var g3a = document.getElementById("G3a").value;
 
-	var new_loc_mobility = -1;
+	var new_loc_mobility = "<span class='error'>N/A</span>";
 
 	// rules
 	if ((g2e == 0 || g2e == 1 || g2e == 2) && 
@@ -211,7 +212,7 @@ function LOCEating() {
 	var g2j = document.getElementById("G2j").value;
 	var k2e = document.getElementById("K2e").value;
 
-	var new_loc_eating = -1;
+	var new_loc_eating = "<span class='error'>N/A</span>";
 
 	// rules
 	if (g2j == 0 || k2e == 0) {
@@ -249,7 +250,7 @@ function LOCToileting() {
 	var g2g = document.getElementById("G2g").value;
 	var g2h = document.getElementById("G2h").value;
 
-	var new_loc_toileting = -1;
+	var new_loc_toileting = "<span class='error'>N/A</span>";
 
 	// rules
 	if ((g2g == 0 || g2g == 1 || g2g == 2) && 
@@ -279,7 +280,7 @@ function LOCBathing() {
 	// grab values from the form
 	var g2a = document.getElementById("G2a").value;
 
-	var new_loc_bathing = -1;
+	var new_loc_bathing = "<span class='error'>N/A</span>";
 
 	// rules
 	if (g2a == 0 || g2a == 1 || g2a == 2 || g2a == 3) {
@@ -301,7 +302,7 @@ function LOCDressing() {
 	var g2c = document.getElementById("G2c").value;
 	var g2d = document.getElementById("G2d").value;
 
-	var new_loc_dressing = -1;
+	var new_loc_dressing = "<span class='error'>N/A</span>";
 
 	// rules
 	if ((g2b == 0 || g2b == 1 || g2b == 2 || g2b == 3) &&
@@ -327,8 +328,8 @@ function LOCRehabilitation() {
 	var n3fa = document.getElementById("N3fa").value;
 	var n3ga = document.getElementById("N3ga").value;
 	var n3ia = document.getElementById("N3ia").value;
-console.log(n3ea, n3fa, n3ga, n3ia)
-	var new_loc_rehabilitation = -1;
+
+	var new_loc_rehabilitation = "<span class='error'>N/A</span>";
 
 	// rules
 	if (n3ea == 0 && n3fa == 0 && n3ga == 0 && n3ia == 0) {
@@ -371,7 +372,7 @@ function LOCTreatments() {
 	var n2h = document.getElementById("N2h").value;
 	var n2q = document.getElementById("N2q").value;
 
-	var new_loc_treatments = -1;
+	var new_loc_treatments = "<span class='error'>N/A</span>";
 
 	// rules
 	if ((l1 == 0 && n2k == 0) &&
@@ -415,7 +416,7 @@ function LOCMedications() {
 	// grab values from the form
 	var g1d = document.getElementById("G1d").value;
 
-	var new_loc_medications = -1;
+	var new_loc_medications = "<span class='error'>N/A</span>";
 
 	// rules
 	if (g1d == 0 || g1d == 1 || g1d == 2 || g1d == 3) {
@@ -439,7 +440,7 @@ function LOCMealprep() {
 	// grab values from the form
 	var g1a = document.getElementById("G1a").value;
 
-	var new_loc_mealprep = -1;
+	var new_loc_mealprep = "<span class='error'>N/A</span>";
 
 	// rules
 	if (g1a == 0 || g1a == 1 || g1a == 2 || g1a == 3) {
@@ -468,7 +469,7 @@ function LOCSafety() {
 	var j3c = document.getElementById("J3c").value;
 	var j3d = document.getElementById("J3d").value;
 
-	var new_loc_safety = -1;
+	var new_loc_safety = "<span class='error'>N/A</span>";
 
 	// rules
 	if ((d4 == 0 || d4 == 1 || d4 == 2) ||
@@ -498,6 +499,26 @@ function LOCSafety() {
 
 	// display new LOC for subcategory and update total
 	document.getElementById("loc_safety").innerHTML = new_loc_safety;
+	updateTotal();
+}
+
+// sets all input back to 0
+function ResetForm() {
+	var forms = document.getElementsByTagName("input");
+	for (var i = 0; i < forms.length; i++) {
+		forms[i].value = "0";
+	}
+	var subcategories = document.getElementsByClassName("totalScore")[0].getElementsByTagName("span");
+	for (var i = 0; i < subcategories.length; i++) {
+		if (subcategories[i].id == "loc_cognition_trigger" || 
+			subcategories[i].id == "loc_mobility_trigger" || 
+			subcategories[i].id == "loc_eating_trigger") {
+			subcategories[i].innerHTML = "";
+		}
+		else {
+			subcategories[i].innerHTML = "0";
+		}
+	}
 	updateTotal();
 }
 
