@@ -3,6 +3,24 @@ body {
 	font-family: arial;
 }
 
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:visited { 
+	text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.url {
+	color: blue;
+}
+
 input {
 	width: 50px;
 }
@@ -11,11 +29,11 @@ input {
 }
 
 .totalScore {
-	color: #333;
-	background-color: #D3D3D3;
 	text-align: right;
 	float: right;
 	padding: 20px;
 	position: sticky;
-	top: 0;
+	top: 2.5em;
+	color: #333;
+	background-color: #D3D3D3;
 }

@@ -1,3 +1,11 @@
+window.addEventListener('load', function () {
+	let inputs = Array.from(document.getElementsByTagName("input"));
+	inputs.forEach(function(el) {
+		el.value = 0;
+		el.onclick = function() {el.select();}
+		el.type = "number";
+	});
+});
 
 // find new LOC total score based on each subcategory
 // invalid subtotals have a value of -1 and we do not want to sum these, so check first
