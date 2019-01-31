@@ -152,7 +152,7 @@ function LOCCognition() {
 
 		new_loc_cognition = 9;
 	}
-
+	// note deviation from proposed algorithm, as this is the only way to reach the c1=4 / c1=5 trigger
 	if (c1 == 4 || c1 == 5) {
 		new_loc_cognition = 9;
 		document.getElementById("loc_cognition_trigger").innerHTML = "*TRIGGER";
