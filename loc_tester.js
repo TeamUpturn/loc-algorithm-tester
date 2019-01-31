@@ -258,7 +258,7 @@ function LOCToileting() {
 		new_loc_toileting = 0;
 	}
 
-	if ((g2g == 3 || g2g == 4) && 
+	if ((g2g == 3 || g2g == 4) || 
 		(g2h == 3 || g2h == 4)) {
 		new_loc_toileting = 3;
 	}
