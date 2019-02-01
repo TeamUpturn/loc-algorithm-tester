@@ -336,7 +336,7 @@ function LOCRehabilitation() {
 		new_loc_rehabilitation = 0;
 	}
 
-	if (n3ea == 1 || n3fa == 1 || n3ga == 1 || n3ia == 1) {
+	if (n3ea == 1 || n3fa == 1 || n3ga == 1 && n3ia == 1) {
 		new_loc_rehabilitation = 3;
 	}
 
