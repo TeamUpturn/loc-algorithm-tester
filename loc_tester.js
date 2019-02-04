@@ -361,6 +361,7 @@ function LOCRehabilitation() {
 
 function LOCTreatments() {
 	// grab values from the form
+	var h1 = document.getElementById("H1").value; // this value is not defined in proposed document
 	var h2 = document.getElementById("H2").value;
 	var h3 = document.getElementById("H3").value;
 	var l1 = document.getElementById("L1").value;
