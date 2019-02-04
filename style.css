@@ -21,6 +21,10 @@ a:hover {
 	color: blue;
 }
 
+.url:visited {
+	color: blue;
+}
+
 input {
 	width: 50px;
 }
