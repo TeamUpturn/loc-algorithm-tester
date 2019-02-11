@@ -433,8 +433,10 @@ with open(sys.argv[1], 'r') as csvfile:
 		temp["LOC Safety"] = LOC_safety(row)
 
 		for k, v in temp.items():
-			if v == "Not Present" or v == "Present" or v == None:
+			if v == "Not Present" or v == "Present":
 				pass
+			elif v == None:
+				temp[k] = "No matching output"
 			else:
 				LOC_total += v
 
@@ -464,8 +466,11 @@ with open(sys.argv[2], 'w') as csvfile:
 					"LOC Meal Prep",
 					"LOC Safety"
 					]
-	# add new column headers after the old ones to preserve order
+	# add new column headers after the current LOC score to make comparison easy
+	temp = headers[6:]
+	headers = headers[:6]
 	headers.extend(new_headers)
+	headers.extend(temp)
 	# create writer object w/ those headers
 	writer = csv.DictWriter(csvfile, fieldnames = headers)
 	# write the dictionary objects 
