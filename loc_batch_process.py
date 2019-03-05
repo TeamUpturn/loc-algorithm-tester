@@ -5,7 +5,7 @@ For use on csv files with each survey question as a labeled column in the file.
 Written Jan 28, 2019 by Emma Weil at Upturn / emma@upturn.org
 
 Usage: argv[1] is the path/filename of csv file and argv[2] is the destination
-destination file will have only ID and new score 
+destination file will have all new columns + old columns 
 
 """
 
@@ -476,5 +476,13 @@ with open(sys.argv[2], 'w') as csvfile:
 	# write the dictionary objects 
 	writer.writeheader()
 	writer.writerows(new_rows)
+
+	# count total now ineligible, AKA old score was >= 24 and new score is < 18
+	newly_ineligible = 0
+	for row in new_rows:
+		if (row["Current LOC Score"] >= 24) and (row["New LOC Total Score"] < 18):
+			newly_ineligible += 1
+
+	print("Newly ineligible: " + str(newly_ineligible))
 
 
