@@ -483,6 +483,6 @@ with open(sys.argv[2], 'w') as csvfile:
 		if (int(row["Current LOC Score"]) >= 24) and (int(row["New LOC Total Score"]) < 18):
 			newly_ineligible += 1
 
-	print("Newly ineligible: " + str(newly_ineligible) + " out of " + str(len(new_rows)))
+	print("Newly ineligible: " + str(newly_ineligible) + " out of " + str(len(new_rows)) + ", or " + str(newly_ineligible * 100.0 / len(new_rows)) + "%")
 
 
