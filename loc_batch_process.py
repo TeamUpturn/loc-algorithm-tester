@@ -479,10 +479,10 @@ with open(sys.argv[2], 'w') as csvfile:
 
 	# count total now ineligible, AKA old score was >= 24 and new score is < 18
 	newly_ineligible = 0
-	for row in new_rows:
-		if (row["Current LOC Score"] >= 24) and (row["New LOC Total Score"] < 18):
+	for e, row in enumerate(new_rows):
+		if (int(row["Current LOC Score"]) >= 24) and (int(row["New LOC Total Score"]) < 18):
 			newly_ineligible += 1
 
-	print("Newly ineligible: " + str(newly_ineligible))
+	print("Newly ineligible: " + str(newly_ineligible) + " out of " + str(len(new_rows)))
 
 
