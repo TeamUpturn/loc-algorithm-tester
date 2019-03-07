@@ -12,6 +12,7 @@ destination file will have all new columns + old columns
 import csv
 import pprint
 import sys
+import re
 	
 
 def LOC_behavioral(client):
@@ -402,9 +403,13 @@ def LOC_safety(client):
 
 ### MAIN ###
 
-# for dictwriter
+## for dictwriter
 new_rows = []
 headers = []
+
+## for record-keeping
+# keys are categories of interest, values are number of times each category appears
+cat_of_interest = {}  
 
 with open(sys.argv[1], 'r') as csvfile:
 	# read first line of file to get headers in order
@@ -447,6 +452,14 @@ with open(sys.argv[1], 'r') as csvfile:
 		# put row to be written, to the list of dictionaries
 		new_rows.append(row)
 
+		# update categories of interest counter dictionary
+		# pprint.pprint(row["Categories of Interest"].split(", "))
+		categories = re.split(",|;|AND", row["Categories of Interest"].upper())
+		for cat in categories:
+			if cat.strip() not in cat_of_interest:
+				cat_of_interest[cat.strip()] = 0
+			cat_of_interest[cat.strip()] += 1
+
 with open(sys.argv[2], 'w') as csvfile:
 	new_headers = [ 
 					"New LOC Total Score",
@@ -484,5 +497,9 @@ with open(sys.argv[2], 'w') as csvfile:
 			newly_ineligible += 1
 
 	print("Newly ineligible: " + str(newly_ineligible) + " out of " + str(len(new_rows)) + ", or " + str(newly_ineligible * 100.0 / len(new_rows)) + "%")
+	pprint.pprint(cat_of_interest)
 
+with open("categories_of_interest.csv", 'w') as csvfile:
+	writer = csv.writer(csvfile)
+	writer.writerows(map(list, cat_of_interest.items()))
 
