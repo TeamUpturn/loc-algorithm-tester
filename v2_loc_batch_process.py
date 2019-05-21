@@ -318,7 +318,7 @@ def LOC_treatments(client):
 	if ((h1 == 0 or h1 == 2 or h1 == 3 or h1 == 4 or h1 == 5 or h1 == 8) and
 		(h3 == 0 or h3 == 2 or h3 == 3 or h3 == 4 or h3 == 5 or h3 == 8) and
 		(l1 == 0 or l1 == 1) and
-		(k3 == 0 or k3 == 1 or k3 == 2 or k3 == 4) and
+		(k3 == 0 or k3 == 1 or k3 == 2 or k3 ==3 or k3 == 4) and
 		(n2g == 0) and
 		(n2h == 0) and
 		(n2j == 0) and
@@ -463,12 +463,14 @@ with open(sys.argv[1], 'r') as csvfile:
 		new_rows.append(row)
 
 		# update categories of interest counter dictionary
-		# pprint.pprint(row["Categories of Interest"].split(", "))
+		"""
+		pprint.pprint(row["Categories of Interest"].split(", "))
 		categories = re.split(",|;|AND", row["Categories of Interest"].upper())
 		for cat in categories:
 			if cat.strip() not in cat_of_interest:
 				cat_of_interest[cat.strip()] = 0
 			cat_of_interest[cat.strip()] += 1
+		"""
 
 with open(sys.argv[2], 'w') as csvfile:
 	new_headers = [ 
@@ -507,7 +509,7 @@ with open(sys.argv[2], 'w') as csvfile:
 			newly_ineligible += 1
 
 	print("Newly ineligible: " + str(newly_ineligible) + " out of " + str(len(new_rows)) + ", or " + str(newly_ineligible * 100.0 / len(new_rows)) + "%")
-	pprint.pprint(cat_of_interest)
+	# pprint.pprint(cat_of_interest)
 
 with open("categories_of_interest.csv", 'w') as csvfile:
 	writer = csv.writer(csvfile)
